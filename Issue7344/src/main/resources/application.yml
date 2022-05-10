@@ -1,0 +1,30 @@
+micronaut:
+  executors:
+    io:
+      type: CACHED
+  application:
+    name: stuckThread
+  netty:
+    event-loops:
+      client:
+        num-threads: 10
+        prefer-native-transport: true
+    client:
+      read-timeout: 60s
+  server:
+    port: 9090
+    thread-selection: io
+    idle-timeout: 400s
+tracing.jaeger.enabled: true
+tracing:
+  instrument-threads: true      # https://github.com/micronaut-projects/micronaut-core/issues/2643
+  # @see io.micronaut.tracing.jaeger.JaegerConfiguration
+  jaeger:
+    enabled: true
+    sampler:
+      type: probabilistic
+      probability: 1.0
+    # @see oracle.oic.v3.mtms.infra.context.impl.MtmsJaegerCodecConfiguration
+    codec:
+      propagation: b3
+
