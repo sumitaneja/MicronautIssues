@@ -1,0 +1,40 @@
+micronaut:
+  netty:
+    event-loops:
+      default:
+        num-threads: 15
+        prefer-native-transport: true
+      cg:
+        num-threads: 30
+        prefer-native-transport: true
+  metrics:
+    binders:
+      netty:
+        queues:
+          enabled: true
+    enabled: true
+    export:
+      prometheus:
+        enabled: true
+        step: PT1M
+        descriptions: false
+  executors:
+    io:
+      type: FIXED
+      number-of-threads: 15
+  application:
+    name: mvn-sample
+  http:
+    client:
+      event-loop-group: cg
+      read-timeout: 300s
+  server:
+    port: 9090
+    thread-selection: io
+    netty:
+      maxHeaderSize: 500KB
+#      log-level: DEBUG
+endpoints:
+  prometheus:
+    enabled: true
+    sensitive: false
