@@ -7,8 +7,10 @@ import io.micronaut.http.MutableHttpRequest;
 import io.micronaut.http.client.HttpClient;
 import io.micronaut.http.client.annotation.Client;
 import io.micronaut.runtime.server.EmbeddedServer;
-import io.micronaut.test.annotation.MicronautTest;
+import io.micronaut.test.extensions.junit5.annotation.MicronautTest;
+
 import org.junit.jupiter.api.Test;
+
 
 import javax.inject.Inject;
 import java.io.IOException;
@@ -30,6 +32,7 @@ public class URLContorllerSpec {
 
         MutableHttpRequest req = HttpRequest.GET("/ic/api/integration/v1/flows/rest/automation/" +
                 "AUTOMATION_SCHEDULED_USECASES/1.0/TESTORCHFLOW/data") .header("uber-trace-id", "123:234:345:456")
+                .header("accept","application/xml")
                 .header("X-B3-ParentSpanId", "1234")
                 .header("X-B3-SpanId", "12345")
                 .header("uberctx-level", "leveled").accept(MediaType.APPLICATION_JSON);
@@ -46,6 +49,7 @@ public class URLContorllerSpec {
 
         MutableHttpRequest req = HttpRequest.GET("/ic/api/integration/v1/flows/rest/automation/" +
                 "AUTOMATION_SCHEDULED_USECASES/1.0/TESTORCHFLOW/data") .header("uber-trace-id", "123:234:345:456")
+                .header("accept","application/xml")
                 .header("X-B3-ParentSpanId", "1234")
                 .header("X-B3-SpanId", "12345")
                 .header("uberctx-level", "leveled");
@@ -63,6 +67,7 @@ public class URLContorllerSpec {
 
         MutableHttpRequest req = HttpRequest.GET("/ic/api/integration/v1/flows/rest/" +
                 "TESTORCHFLOW/1.0/data") .header("uber-trace-id", "123:234:345:456")
+                .header("accept","application/xml")
                 .header("X-B3-ParentSpanId", "1234")
                 .header("X-B3-SpanId", "12345")
                 .header("uberctx-level", "leveled").accept(MediaType.APPLICATION_JSON);
@@ -79,6 +84,7 @@ public class URLContorllerSpec {
 
         MutableHttpRequest req = HttpRequest.GET("/ic/api/integration/v1/flows/rest/" +
                 "TESTORCHFLOW/1.0/data") .header("uber-trace-id", "123:234:345:456")
+                .header("accept","application/xml")
                 .header("X-B3-ParentSpanId", "1234")
                 .header("X-B3-SpanId", "12345")
                 .header("uberctx-level", "leveled");

@@ -1,13 +1,13 @@
 package suaneja.sample.Issue7344;
 
 
+import io.micronaut.core.annotation.Nullable;
 import io.micronaut.http.HttpRequest;
 import io.micronaut.http.HttpResponse;
 import io.micronaut.http.MediaType;
 import io.micronaut.http.annotation.*;
 import io.reactivex.Single;
 
-import javax.annotation.Nullable;
 
 @Controller
 public class URLResolveController {
@@ -18,7 +18,7 @@ public class URLResolveController {
             "/ic/{apiType}/integration/v1/flows/{appType}/automation/{automationId}/{automationVersion}/{flowId}",
             "/ic/{apiType}/integration/v1/flows/{appType}/automation/{automationId}/{automationVersion}/{flowId}/{+resourcePath}"
     })
-    @Produces(MediaType.ALL)
+//    @Produces(MediaType.ALL)
 //    @ExecuteOn(AsyncRuntimeController.ADAPTER_INBOUND_EXECUTOR)
     public Single<HttpResponse> triggerGet(@PathVariable("apiType") String apiType,
                                            @PathVariable("appType") String appType,
@@ -39,7 +39,7 @@ public class URLResolveController {
             "/ic/{apiType}/integration/v1/flows/{appType}/automation/{automationId}/{automationVersion}/{flowId}",
             "/ic/{apiType}/integration/v1/flows/{appType}/automation/{automationId}/{automationVersion}/{flowId}/{+resourcePath}"
     })
-    @Produces(MediaType.ALL)
+//    @Produces(MediaType.ALL)
     @Consumes(MediaType.ALL)
 //    @ExecuteOn(AsyncRuntimeController.ADAPTER_INBOUND_EXECUTOR)
     public Single<HttpResponse> triggerPut(@PathVariable("apiType") String apiType,
