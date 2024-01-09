@@ -1,0 +1,17 @@
+micronaut:
+  application:
+    name: demo
+
+  http:
+    client:
+      read-timeout: 5s
+      connect-timeout: 5s
+      max-content-length: 1073741824
+  server:
+    port: 10101
+    netty:
+      max-header-size: 1310720
+netty:
+  default:
+    allocator:
+      max-order: 3
